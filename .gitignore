@@ -40,5 +40,5 @@ ApacheIgniteTest.iml
 .idea/uiDesigner.xml
 .idea/vcs.xml
 
-src/main/resources/
+#src/main/resources/
 src/test/
