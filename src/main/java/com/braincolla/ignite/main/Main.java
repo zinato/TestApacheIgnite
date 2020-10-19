@@ -23,7 +23,7 @@ import org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder;
 public class Main {
 
   private static final String BOOKMETADATAFILE = "book_meta_data.jsonl";
-  private static final String RECOMMENDFILE = "recommend_data_100_5m.jsonl";
+  private static final String RECOMMENDFILE = "recommend_data.jsonl";
   private static final String BOOKTEST = "test_book.jsonl";
 
   private static final String JOARA_BOOK_METE_CACHE = "joaraBookMetaData";
