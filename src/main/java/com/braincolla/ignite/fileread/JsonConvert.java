@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -32,10 +34,12 @@ public class JsonConvert {
 
   public List<JoaraBook> makeJoaraBookMetaDataMapFromJson(String fileName)
     throws IOException, URISyntaxException {
-
+    System.out.println("FileName : " + fileName);
     FileResourcesUtils app = new FileResourcesUtils();
-    File file = app.getFileFromResource(fileName);
-    BufferedReader inFile = new BufferedReader(new FileReader(file));
+//    File file = app.getFileFromResource(fileName);
+    InputStream file = app.getFileFromResourceAsStream(fileName);
+//    BufferedReader inFile = new BufferedReader(new FileReader(file));
+    BufferedReader inFile = new BufferedReader(new InputStreamReader(file));
     Gson gson = new Gson();
     List<JoaraBook> joaraBookList = new ArrayList<>();
     String sLine = null;
@@ -59,20 +63,24 @@ public class JsonConvert {
     throws IOException, URISyntaxException {
     System.out.println("FileName : " + fileName);
     FileResourcesUtils app = new FileResourcesUtils();
-    File file = app.getFileFromResource(fileName);
+//    File file = app.getFileFromResource(fileName);
+    InputStream file = app.getFileFromResourceAsStream(fileName);
+    BufferedReader inFile = new BufferedReader(new InputStreamReader(file));
 //    JsonReader jsonReader = new JsonReader(new FileReader(file));
 //    BufferedReader inFile = new BufferedReader(new FileInputStreamReader(file));
+
     Gson gson = new Gson();
     List<RecommendData> recommendDataList = new ArrayList<>();
-//    String sLine = null;
-//    while ((sLine = inFile.readLine()) != null) {
-//      RecommendData recommendData = gson.fromJson(sLine, RecommendData.class);
-//      recommendDataList.add(recommendData);
-//    }
+    String sLine = null;
     long start = System.currentTimeMillis(); // start time
-    try (Stream<String> lines = Files.lines(Paths.get(String.valueOf(file)), Charset.defaultCharset())) {
-      lines.forEachOrdered(line -> recommendDataList.add(gson.fromJson(line, RecommendData.class)));
+    while ((sLine = inFile.readLine()) != null) {
+      RecommendData recommendData = gson.fromJson(sLine, RecommendData.class);
+      recommendDataList.add(recommendData);
     }
+
+//    try (Stream<String> lines = Files.lines(Paths.get(String.valueOf(file)), Charset.defaultCharset())) {
+//      lines.forEachOrdered(line -> recommendDataList.add(gson.fromJson(line, RecommendData.class)));
+//    }
     long end = System.currentTimeMillis(); // end time
 //    try (Stream<String> stream = Files.lines(Paths.get(String.valueOf(file)))) {
 //      stream.forEach(System.out::println);

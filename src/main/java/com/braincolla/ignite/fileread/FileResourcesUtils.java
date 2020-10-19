@@ -12,22 +12,22 @@ import java.nio.file.Files;
 import java.util.List;
 
 public class FileResourcesUtils {
-  public static void main(String[] args) throws IOException, URISyntaxException {
-
-    FileResourcesUtils app = new FileResourcesUtils();
-
-    //String fileName = "database.properties";
-    String fileName = "test.jsonl";
-
-    System.out.println("getResourceAsStream : " + fileName);
-    InputStream is = app.getFileFromResourceAsStream(fileName);
-    printInputStream(is);
-
-    System.out.println("\ngetResource : " + fileName);
-    File file = app.getFileFromResource(fileName);
-    printFile(file);
-
-  }
+//  public static void main(String[] args) throws IOException, URISyntaxException {
+//
+//    FileResourcesUtils app = new FileResourcesUtils();
+//
+//    //String fileName = "database.properties";
+//    String fileName = "test.jsonl";
+//
+//    System.out.println("getResourceAsStream : " + fileName);
+//    InputStream is = app.getFileFromResourceAsStream(fileName);
+//    printInputStream(is);
+//
+//    System.out.println("\ngetResource : " + fileName);
+//    File file = app.getFileFromResource(fileName);
+//    printFile(file);
+//
+//  }
 
   // get a file from the resources folder
   // works everywhere, IDEA, unit test and JAR file.
@@ -56,11 +56,12 @@ public class FileResourcesUtils {
 
       // failed if files have whitespaces or special characters
       //return new File(resource.getFile());
-
+      System.out.println("resource : " + resource + ", resource URI : " + resource.toURI().toString() );
       return new File(resource.toURI());
     }
 
   }
+
 
   // print input stream
   static void printInputStream(InputStream is) {

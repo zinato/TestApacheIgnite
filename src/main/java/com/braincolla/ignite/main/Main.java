@@ -34,7 +34,7 @@ public class Main {
 
   public static void main(String[] args) throws IgniteException, IOException, URISyntaxException {
     ExamplesUtils.checkMinMemory(MIN_MEMORY);
-
+    System.out.println("Main Class Execute!!");
     //embedded mode
 
     //set server
