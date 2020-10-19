@@ -18,6 +18,17 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.braincolla.ignite.main.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -26,6 +37,7 @@
   </properties>
 
   <dependencies>
+    <!-- ignite -->
     <dependency>
       <groupId>org.apache.ignite</groupId>
       <artifactId>ignite-core</artifactId>
@@ -36,7 +48,7 @@
       <artifactId>ignite-spring</artifactId>
       <version>${ignite.version}</version>
     </dependency>
-    <!---> gson <-->
+    <!-- gson -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>

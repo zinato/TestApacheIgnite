@@ -72,6 +72,7 @@ public class Main {
       .setClientMode(true);
 
     Ignite client = Ignition.start(clientConfig);
+//    server-client mode
 //    IgniteConfiguration cfg = new IgniteConfiguration();
 //    cfg.setClientMode(true);
 //    // Classes of custom Java logic will be transferred over the wire from this app.
